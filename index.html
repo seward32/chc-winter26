@@ -79,7 +79,32 @@ body { font-family: "DM Sans", sans-serif; background: var(--augusta-cream); col
 .schedule tr.upcoming { opacity: 0.5; }
 .schedule tr.played:hover { background: rgba(0,103,71,0.04); }
 
-.week-card { background: white; border-radius: 4px; margin: 2rem 0; box-shadow: 0 1px 8px rgba(0,50,30,0.08); overflow: hidden; }
+/* Week Tabs */
+.week-tabs {
+    display: flex; gap: 0; margin: 1.5rem 0 0; flex-wrap: wrap;
+}
+.week-tab {
+    padding: 0.7rem 1.5rem; font-family: "DM Sans", sans-serif; font-size: 0.8rem;
+    font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+    background: var(--augusta-sand); color: var(--text-muted); border: 1px solid rgba(0,103,71,0.12);
+    border-bottom: none; cursor: pointer; transition: all 0.2s ease; position: relative;
+    border-radius: 4px 4px 0 0; margin-right: -1px;
+}
+.week-tab:hover { background: rgba(0,103,71,0.08); color: var(--augusta-dark); }
+.week-tab.active {
+    background: white; color: var(--augusta-dark); border-color: rgba(0,103,71,0.15);
+    box-shadow: 0 -2px 0 var(--augusta-yellow) inset;
+}
+.week-tab.active::after {
+    content: ""; position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; background: white;
+}
+.week-tab .tab-course {
+    display: block; font-size: 0.68rem; font-weight: 400; letter-spacing: 0; text-transform: none;
+    font-family: "Source Serif 4", serif; margin-top: 0.15rem; opacity: 0.7;
+}
+
+.week-card { background: white; border-radius: 0 4px 4px 4px; margin: 0 0 2rem; box-shadow: 0 1px 8px rgba(0,50,30,0.08); overflow: hidden; border: 1px solid rgba(0,103,71,0.12); display: none; }
+.week-card.active { display: block; }
 .week-header {
     background: linear-gradient(135deg, var(--augusta-deepest), var(--augusta-green));
     padding: 1.5rem 2rem; position: relative;
@@ -90,6 +115,12 @@ body { font-family: "DM Sans", sans-serif; background: var(--augusta-cream); col
 }
 .week-header h2 { font-family: "Playfair Display", serif; font-weight: 700; font-size: 1.5rem; color: white; }
 .week-meta { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
+.week-winner {
+    display: inline-block; margin-top: 0.6rem; background: rgba(242,199,92,0.15);
+    border: 1px solid rgba(242,199,92,0.3); padding: 0.25rem 0.8rem; border-radius: 3px;
+    font-size: 0.75rem; color: var(--augusta-yellow); font-weight: 500;
+}
+.week-winner .winner-icon { margin-right: 0.3rem; }
 
 .scorecard-scroll { overflow-x: auto; padding: 0 1rem; }
 .scorecard { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 1rem 0; min-width: 780px; }
@@ -131,12 +162,8 @@ body { font-family: "DM Sans", sans-serif; background: var(--augusta-cream); col
 
 .footer { text-align: center; padding: 2rem; font-size: 0.7rem; color: var(--text-muted); border-top: 1px solid rgba(0,103,71,0.1); margin-top: 2rem; }
 
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    .container { padding: 1rem; }
-    .week-header { padding: 1rem 1.2rem; }
-    .week-header h2 { font-size: 1.2rem; }
-}
+td.stroke-1 { background: rgba(0,103,71,0.08); }
+td.stroke-2 { background: rgba(0,103,71,0.18); }
 
 .stats-wrap { overflow-x: auto; margin-bottom: 2rem; }
 .stats-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
@@ -151,20 +178,39 @@ body { font-family: "DM Sans", sans-serif; background: var(--augusta-cream); col
 .stats-table .stat-highlight { font-weight: 700; color: var(--augusta-dark); }
 .stats-table .birdie-count { color: var(--birdie-red); font-weight: 600; }
 
-td.stroke-1 { background: rgba(0,103,71,0.08); }
-td.stroke-2 { background: rgba(0,103,71,0.18); }
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .container { padding: 1rem; }
+    .week-header { padding: 1rem 1.2rem; }
+    .week-header h2 { font-size: 1.2rem; }
+    .week-tab { padding: 0.5rem 0.8rem; font-size: 0.72rem; }
+    .week-tab .tab-course { font-size: 0.6rem; }
+}
 </style></head><body>
-<header class="hero"><div class="hero-badge">Cross Handed Crew</div><h1>Winter 2026 World Tour</h1><div class="divider"></div><p class="season">2025-2026</p><p class="format">Standard Stableford · Net Scoring · 18 Holes</p></header>
+
+<header class="hero"><div class="hero-badge">Cross Handed Crew</div><h1>Winter 2026 World Tour</h1><div class="divider"></div><p class="season">2025–2026</p><p class="format">Standard Stableford · Net Scoring · 18 Holes</p></header>
+
 <div class="container">
-    <h2 class="section-title">Standings</h2>
-    <p class="scoring-note">Weekly winner earns +4 bonus points (a Stableford eagle). Ties split the bonus.</p>
-    <div class="standings-wrap"><table class="standings"><thead><tr><th>#</th><th>Player</th><th>Wks</th><th>Stableford</th><th class="bonus-col">Bonus</th><th class="total-col">Total</th><th>Avg</th><th>Best</th><th>Worst</th><th>Wins</th><th>Win %</th></tr></thead><tbody><tr><td class="rank gold">1</td><td class="player-name">Stowe</td><td>1</td><td>39</td><td class="bonus-pts">+4</td><td class="total-pts">43</td><td>39.0</td><td>39</td><td>39</td><td>1</td><td>100%</td></tr>
-<tr><td class="rank silver">2</td><td class="player-name">Seward</td><td>1</td><td>37</td><td class="bonus-pts">+0</td><td class="total-pts">37</td><td>37.0</td><td>37</td><td>37</td><td>0</td><td>0%</td></tr>
-<tr><td class="rank bronze">3</td><td class="player-name">Charlie</td><td>1</td><td>34</td><td class="bonus-pts">+0</td><td class="total-pts">34</td><td>34.0</td><td>34</td><td>34</td><td>0</td><td>0%</td></tr>
+
+<!-- ═══════════════ STANDINGS ═══════════════ -->
+<h2 class="section-title">Standings</h2>
+<p class="scoring-note">Weekly winner earns +4 bonus points (a Stableford eagle). Ties split the bonus.</p>
+<div class="standings-wrap"><table class="standings"><thead><tr>
+<th>#</th><th>Player</th><th>Wks</th><th>Stableford</th><th class="bonus-col">Bonus</th><th class="total-col">Total</th><th>Avg</th><th>Best</th><th>Worst</th><th>Wins</th><th>Win %</th>
+</tr></thead><tbody>
+<!-- Stowe: Wk1=39+4=43, Wk2=39+1=40 → Stab=78, Bonus=+5, Total=83 -->
+<tr><td class="rank gold">1</td><td class="player-name">Stowe</td><td>2</td><td>78</td><td class="bonus-pts">+5</td><td class="total-pts">83</td><td>39.0</td><td>39</td><td>39</td><td>1</td><td>50%</td></tr>
+<!-- Seward: Wk1=37+0=37, Wk2=39+1=40 → Stab=76, Bonus=+1, Total=77 -->
+<tr><td class="rank silver">2</td><td class="player-name">Seward</td><td>2</td><td>76</td><td class="bonus-pts">+1</td><td class="total-pts">77</td><td>38.0</td><td>39</td><td>37</td><td>0</td><td>0%</td></tr>
+<!-- Charlie: Wk1=34+0=34, Wk2=39+1=40 → Stab=73, Bonus=+1, Total=74 -->
+<tr><td class="rank bronze">3</td><td class="player-name">Charlie</td><td>2</td><td>73</td><td class="bonus-pts">+1</td><td class="total-pts">74</td><td>36.5</td><td>39</td><td>34</td><td>0</td><td>0%</td></tr>
 </tbody></table></div>
-    <h2 class="section-title">Schedule</h2>
-    <div class="standings-wrap"><table class="schedule"><thead><tr><th>Wk</th><th>Date</th><th>Course</th><th>Location</th><th>Winner</th><th>✓</th></tr></thead><tbody><tr class="played"><td>1</td><td>2/1</td><td class="course-name">Cape Wickham Links</td><td class="location">Australia</td><td class="winner-cell">Stowe (39)</td><td class="status-cell">✓</td></tr>
-<tr class="upcoming"><td>2</td><td>2/8</td><td class="course-name">Barnbougle Dunes</td><td class="location">Australia</td><td class="winner-cell"></td><td class="status-cell">—</td></tr>
+
+<!-- ═══════════════ SCHEDULE ═══════════════ -->
+<h2 class="section-title">Schedule</h2>
+<div class="standings-wrap"><table class="schedule"><thead><tr><th>Wk</th><th>Date</th><th>Course</th><th>Location</th><th>Winner</th><th>✓</th></tr></thead><tbody>
+<tr class="played"><td>1</td><td>2/1</td><td class="course-name">Cape Wickham Links</td><td class="location">Australia</td><td class="winner-cell">Stowe (39)</td><td class="status-cell">✓</td></tr>
+<tr class="played"><td>2</td><td>2/8</td><td class="course-name">Barnbougle Lost Farm</td><td class="location">Australia</td><td class="winner-cell">Tied — 39 all</td><td class="status-cell">✓</td></tr>
 <tr class="upcoming"><td>3</td><td>2/15</td><td class="course-name">Royal Melbourne West</td><td class="location">Australia</td><td class="winner-cell"></td><td class="status-cell">—</td></tr>
 <tr class="upcoming"><td>4</td><td>2/22</td><td class="course-name">Visby</td><td class="location">Sweden</td><td class="winner-cell"></td><td class="status-cell">—</td></tr>
 <tr class="upcoming"><td>5</td><td>3/1</td><td class="course-name">Great Northern</td><td class="location">Denmark</td><td class="winner-cell"></td><td class="status-cell">—</td></tr>
@@ -176,29 +222,95 @@ td.stroke-2 { background: rgba(0,103,71,0.18); }
 <tr class="upcoming"><td>11</td><td>4/12</td><td class="course-name">Bandon Dunes</td><td class="location">Oregon</td><td class="winner-cell"></td><td class="status-cell">—</td></tr>
 <tr class="upcoming"><td>12</td><td>4/19</td><td class="course-name">The Lido</td><td class="location">Wisconsin</td><td class="winner-cell"></td><td class="status-cell">—</td></tr>
 </tbody></table></div>
-    <h2 class="section-title">Scorecards</h2>
-    <section class="week-card" id="week-1">
-        <div class="week-header"><div class="week-badge">WEEK 1</div><h2>Cape Wickham Links</h2><p class="week-meta">Australia · 2/1 · Par 72</p></div>
-        <div class="scorecard-scroll"><table class="scorecard"><thead><tr class="hole-row"><th>Player</th><th>HCP</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th class="subtotal-hdr">OUT</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th class="subtotal-hdr">IN</th><th class="total-hdr">GRS</th><th class="total-hdr">NET</th><th class="stab-hdr">STB</th><th class="bonus-hdr">BNS</th></tr></thead><tbody>
-            <tr class="par-row"><td>Par</td><td></td><td>4</td><td>4</td><td>3</td><td>4</td><td>4</td><td>5</td><td>3</td><td>4</td><td>5</td><td class="subtotal">36</td><td>4</td><td>3</td><td>4</td><td>5</td><td>4</td><td>5</td><td>4</td><td>3</td><td>4</td><td class="subtotal">36</td><td class="total">72</td><td></td><td></td><td></td></tr>
-            <tr class="si-row"><td>SI</td><td></td><td>9</td><td>12</td><td>3</td><td>4</td><td>14</td><td>18</td><td>15</td><td>2</td><td>8</td><td></td><td>17</td><td>13</td><td>16</td><td>7</td><td>11</td><td>6</td><td>1</td><td>10</td><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td class="player-name">Stowe</td><td class="hcp">8</td><td class=""><span class="bogey">5</span></td><td class=""><span class="par-score">4</span></td><td class="stroke-1"><span class="bogey">4</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="bogey">6</span></td><td class=""><span class="bogey">4</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class="stroke-1"><span class="birdie">4</span></td><td class="subtotal">39</td><td class=""><span class="bogey">5</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="bogey">5</span></td><td class="stroke-1"><span class="double-bogey">7</span></td><td class=""><span class="birdie">3</span></td><td class="stroke-1"><span class="par-score">5</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="birdie">2</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class="subtotal">38</td><td class="total">77</td><td class="total">69</td><td class="stab-total">39</td><td class="bonus-earned">+4</td></tr>
-<tr><td class="player-name">Seward</td><td class="hcp">0</td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">5</span></td><td class="subtotal">36</td><td class=""><span class="birdie">3</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="birdie">3</span></td><td class=""><span class="par-score">5</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="bogey">5</span></td><td class="subtotal">35</td><td class="total">71</td><td class="total">71</td><td class="stab-total">37</td><td class="bonus-zero">+0</td></tr>
-<tr><td class="player-name">Charlie</td><td class="hcp">4</td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class="stroke-1"><span class="bogey">4</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="bogey">5</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="par-score">3</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class="subtotal">36</td><td class=""><span class="par-score">4</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="bogey">5</span></td><td class=""><span class="par-score">5</span></td><td class=""><span class="double-bogey">6</span></td><td class=""><span class="birdie">4</span></td><td class="stroke-1"><span class="double-bogey">6</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="par-score">4</span></td><td class="subtotal">42</td><td class="total">78</td><td class="total">74</td><td class="stab-total">34</td><td class="bonus-zero">+0</td></tr>
-</tbody></table></div>
-        <h3 class="stab-detail-label">Stableford Points</h3>
-        <div class="scorecard-scroll"><table class="scorecard stableford-detail"><thead><tr class="hole-row"><th>Player</th><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th class="subtotal-hdr">OUT</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th class="subtotal-hdr">IN</th><th colspan="2"></th><th class="stab-hdr">TOT</th><th></th></tr></thead><tbody><tr><td class="player-name">Stowe</td><td></td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-birdie">4</td><td class="subtotal">19</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="subtotal">20</td><td colspan="2"></td><td class="stab-total">39</td><td></td></tr>
-<tr><td class="player-name">Seward</td><td></td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="subtotal">18</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="subtotal">19</td><td colspan="2"></td><td class="stab-total">37</td><td></td></tr>
-<tr><td class="player-name">Charlie</td><td></td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="subtotal">21</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-bogey">0</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="subtotal">13</td><td colspan="2"></td><td class="stab-total">34</td><td></td></tr>
-</tbody></table></div>
-    </section>
-    <p class="scoring-note">* Highlighted holes represent stroke holes.</p>
 
-    <h2 class="section-title">Advanced Stats</h2>
-    <div class="stats-wrap"><table class="stats-table"><thead><tr><th>Player</th><th>Avg Gross</th><th>Avg Net</th><th>Gross Birdies</th><th>Net Birdies</th><th>Low Gross</th><th>Low Net</th></tr></thead><tbody><tr><td class="player-name">Seward</td><td class="stat-highlight">71.0</td><td class="stat-highlight">71.0</td><td class="birdie-count">4</td><td class="birdie-count">4</td><td class="stat-highlight">71</td><td class="stat-highlight">71</td></tr>
-<tr><td class="player-name">Charlie</td><td class="stat-highlight">78.0</td><td class="stat-highlight">74.0</td><td class="birdie-count">3</td><td class="birdie-count">5</td><td class="stat-highlight">78</td><td class="stat-highlight">74</td></tr>
-<tr><td class="player-name">Stowe</td><td class="stat-highlight">77.0</td><td class="stat-highlight">69.0</td><td class="birdie-count">3</td><td class="birdie-count">8</td><td class="stat-highlight">77</td><td class="stat-highlight">69</td></tr>
-</tbody></table></div>
+<!-- ═══════════════ SCORECARDS ═══════════════ -->
+<h2 class="section-title">Scorecards</h2>
+
+<div class="week-tabs">
+    <button class="week-tab active" onclick="showWeek(1)" id="tab-1">Week 1<span class="tab-course">Cape Wickham Links</span></button>
+    <button class="week-tab" onclick="showWeek(2)" id="tab-2">Week 2<span class="tab-course">Barnbougle Lost Farm</span></button>
 </div>
-<div class="footer">Cross Handed Crew · Winter 2026 World Tour · Last updated February 06, 2026 at 07:39 PM</div>
+
+<!-- ═══════════ WEEK 1 ═══════════ -->
+<section class="week-card active" id="week-1">
+    <div class="week-header">
+        <div class="week-badge">WEEK 1</div>
+        <h2>Cape Wickham Links</h2>
+        <p class="week-meta">Australia · 2/1 · Par 72</p>
+        <div class="week-winner"><span class="winner-icon">🏆</span> Stowe — 39 pts</div>
+    </div>
+    <div class="scorecard-scroll"><table class="scorecard"><thead><tr class="hole-row"><th>Player</th><th>HCP</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th class="subtotal-hdr">OUT</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th class="subtotal-hdr">IN</th><th class="total-hdr">GRS</th><th class="total-hdr">NET</th><th class="stab-hdr">STB</th><th class="bonus-hdr">BNS</th></tr></thead><tbody>
+        <tr class="par-row"><td>Par</td><td></td><td>4</td><td>4</td><td>3</td><td>4</td><td>4</td><td>5</td><td>3</td><td>4</td><td>5</td><td class="subtotal">36</td><td>4</td><td>3</td><td>4</td><td>5</td><td>4</td><td>5</td><td>4</td><td>3</td><td>4</td><td class="subtotal">36</td><td class="total">72</td><td></td><td></td><td></td></tr>
+        <tr class="si-row"><td>SI</td><td></td><td>9</td><td>12</td><td>3</td><td>4</td><td>14</td><td>18</td><td>15</td><td>2</td><td>8</td><td></td><td>17</td><td>13</td><td>16</td><td>7</td><td>11</td><td>6</td><td>1</td><td>10</td><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <!-- Stowe HCP 8: strokes on SI 1-8 → holes: 16(SI1), 8(SI2), 3(SI3), 4(SI4), 18(SI5), 15(SI6), 13(SI7), 9(SI8) -->
+        <tr><td class="player-name">Stowe</td><td class="hcp">8</td><td class=""><span class="bogey">5</span></td><td class=""><span class="par-score">4</span></td><td class="stroke-1"><span class="bogey">4</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="bogey">6</span></td><td class=""><span class="bogey">4</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class="stroke-1"><span class="birdie">4</span></td><td class="subtotal">39</td><td class=""><span class="bogey">5</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="bogey">5</span></td><td class="stroke-1"><span class="double-bogey">7</span></td><td class=""><span class="birdie">3</span></td><td class="stroke-1"><span class="par-score">5</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="birdie">2</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class="subtotal">38</td><td class="total">77</td><td class="total">69</td><td class="stab-total">39</td><td class="bonus-earned">+4</td></tr>
+        <!-- Seward HCP 0: no strokes -->
+        <tr><td class="player-name">Seward</td><td class="hcp">0</td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">5</span></td><td class="subtotal">36</td><td class=""><span class="birdie">3</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="birdie">3</span></td><td class=""><span class="par-score">5</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="bogey">5</span></td><td class="subtotal">35</td><td class="total">71</td><td class="total">71</td><td class="stab-total">37</td><td class="bonus-zero">+0</td></tr>
+        <!-- Charlie HCP 4: strokes on SI 1-4 → holes: 16(SI1), 8(SI2), 3(SI3), 4(SI4) -->
+        <tr><td class="player-name">Charlie</td><td class="hcp">4</td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class="stroke-1"><span class="bogey">4</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="bogey">5</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="par-score">3</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class="subtotal">36</td><td class=""><span class="par-score">4</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="bogey">5</span></td><td class=""><span class="par-score">5</span></td><td class=""><span class="double-bogey">6</span></td><td class=""><span class="birdie">4</span></td><td class="stroke-1"><span class="double-bogey">6</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="par-score">4</span></td><td class="subtotal">42</td><td class="total">78</td><td class="total">74</td><td class="stab-total">34</td><td class="bonus-zero">+0</td></tr>
+    </tbody></table></div>
+    <h3 class="stab-detail-label">Stableford Points</h3>
+    <div class="scorecard-scroll"><table class="scorecard stableford-detail"><thead><tr class="hole-row"><th>Player</th><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th class="subtotal-hdr">OUT</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th class="subtotal-hdr">IN</th><th colspan="2"></th><th class="stab-hdr">TOT</th><th></th></tr></thead><tbody>
+    <tr><td class="player-name">Stowe</td><td></td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-birdie">4</td><td class="subtotal">19</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="subtotal">20</td><td colspan="2"></td><td class="stab-total">39</td><td></td></tr>
+    <tr><td class="player-name">Seward</td><td></td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="subtotal">18</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="subtotal">19</td><td colspan="2"></td><td class="stab-total">37</td><td></td></tr>
+    <tr><td class="player-name">Charlie</td><td></td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="subtotal">21</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-bogey">0</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="subtotal">13</td><td colspan="2"></td><td class="stab-total">34</td><td></td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- ═══════════ WEEK 2 ═══════════ -->
+<section class="week-card" id="week-2">
+    <div class="week-header">
+        <div class="week-badge">WEEK 2</div>
+        <h2>Barnbougle Lost Farm</h2>
+        <p class="week-meta">Australia · 2/8 · Par 72</p>
+        <div class="week-winner"><span class="winner-icon">🤝</span> Three-way tie — 39 pts each (+1 bonus ea.)</div>
+    </div>
+    <div class="scorecard-scroll"><table class="scorecard"><thead><tr class="hole-row"><th>Player</th><th>HCP</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th class="subtotal-hdr">OUT</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th class="subtotal-hdr">IN</th><th class="total-hdr">GRS</th><th class="total-hdr">NET</th><th class="stab-hdr">STB</th><th class="bonus-hdr">BNS</th></tr></thead><tbody>
+        <tr class="par-row"><td>Par</td><td></td><td>5</td><td>4</td><td>4</td><td>3</td><td>4</td><td>3</td><td>4</td><td>5</td><td>4</td><td class="subtotal">36</td><td>5</td><td>4</td><td>5</td><td>4</td><td>4</td><td>3</td><td>4</td><td>3</td><td>4</td><td class="subtotal">36</td><td class="total">72</td><td></td><td></td><td></td></tr>
+        <tr class="si-row"><td>SI</td><td></td><td>18</td><td>16</td><td>12</td><td>11</td><td>1</td><td>10</td><td>5</td><td>4</td><td>13</td><td></td><td>14</td><td>3</td><td>17</td><td>8</td><td>15</td><td>6</td><td>9</td><td>7</td><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <!-- Seward HCP -1: gives back 1 stroke on SI 1 (hole 5) -->
+        <tr><td class="player-name">Seward</td><td class="hcp">–1</td><td class=""><span class="birdie">4</span></td><td class=""><span class="birdie">3</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">3</span></td><td class="stroke-1"><span class="bogey">5</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="par-score">4</span></td><td class="subtotal">34</td><td class=""><span class="birdie">4</span></td><td class=""><span class="bogey">5</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="birdie">3</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="birdie">3</span></td><td class=""><span class="bogey">4</span></td><td class=""><span class="birdie">3</span></td><td class="subtotal">34</td><td class="total">68</td><td class="total">69</td><td class="stab-total">39</td><td class="bonus-earned">+1</td></tr>
+        <!-- Charlie HCP 3: strokes on SI 1-3 → hole5(SI1), hole18(SI2), hole11(SI3) -->
+        <tr><td class="player-name">Charlie</td><td class="hcp">3</td><td class=""><span class="bogey">6</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="bogey">5</span></td><td class=""><span class="par-score">3</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="par-score">4</span></td><td class="subtotal">37</td><td class=""><span class="par-score">5</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="birdie">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">3</span></td><td class=""><span class="birdie">3</span></td><td class=""><span class="par-score">3</span></td><td class="stroke-1"><span class="bogey">5</span></td><td class="subtotal">35</td><td class="total">72</td><td class="total">69</td><td class="stab-total">39</td><td class="bonus-earned">+1</td></tr>
+        <!-- Stowe HCP 7: strokes on SI 1-7 → hole5(SI1), hole18(SI2), hole11(SI3), hole8(SI4), hole7(SI5), hole15(SI6), hole17(SI7) -->
+        <tr><td class="player-name">Stowe</td><td class="hcp">7</td><td class=""><span class="par-score">5</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="par-score">3</span></td><td class="stroke-1"><span class="bogey">5</span></td><td class=""><span class="par-score">3</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class="stroke-1"><span class="par-score">5</span></td><td class=""><span class="bogey">5</span></td><td class="subtotal">38</td><td class=""><span class="bogey">6</span></td><td class="stroke-1"><span class="par-score">4</span></td><td class=""><span class="par-score">5</span></td><td class=""><span class="par-score">4</span></td><td class=""><span class="birdie">3</span></td><td class="stroke-1"><span class="bogey">4</span></td><td class=""><span class="birdie">3</span></td><td class="stroke-1"><span class="bogey">4</span></td><td class="stroke-1"><span class="bogey">5</span></td><td class="subtotal">38</td><td class="total">76</td><td class="total">69</td><td class="stab-total">39</td><td class="bonus-earned">+1</td></tr>
+    </tbody></table></div>
+    <h3 class="stab-detail-label">Stableford Points</h3>
+    <div class="scorecard-scroll"><table class="scorecard stableford-detail"><thead><tr class="hole-row"><th>Player</th><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th class="subtotal-hdr">OUT</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th class="subtotal-hdr">IN</th><th colspan="2"></th><th class="stab-hdr">TOT</th><th></th></tr></thead><tbody>
+    <!-- Seward stab: 3 3 2 2 0 2 2 3 2 | 3 1 3 2 3 1 3 1 3 = 19+20=39 -->
+    <tr><td class="player-name">Seward</td><td></td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-bogey">0</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="subtotal">19</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="subtotal">20</td><td colspan="2"></td><td class="stab-total">39</td><td></td></tr>
+    <!-- Charlie stab: 1 2 1 2 3 2 2 3 2 | 2 3 3 2 2 2 3 2 2 = 18+21=39 -->
+    <tr><td class="player-name">Charlie</td><td></td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-bogey">1</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="subtotal">18</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="subtotal">21</td><td colspan="2"></td><td class="stab-total">39</td><td></td></tr>
+    <!-- Stowe stab: 2 2 2 1 2 2 3 3 1 | 1 3 2 2 3 2 3 2 2 = 18+20... wait -->
+    <!-- Recalc: 2+2+2+1+2+2+3+3+1=18, 1+3+2+2+3+2+3+2+2=20, total=38? No... -->
+    <!-- Using verified: [2, 2, 2, 2, 2, 2, 3, 3, 1, 1, 3, 2, 2, 3, 2, 3, 2, 2] = 19+20=39 -->
+    <tr><td class="player-name">Stowe</td><td></td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-birdie">3</td><td class="stab-bogey">1</td><td class="subtotal">19</td><td class="stab-bogey">1</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-birdie">3</td><td class="stab-par">2</td><td class="stab-par">2</td><td class="subtotal">20</td><td colspan="2"></td><td class="stab-total">39</td><td></td></tr>
+    </tbody></table></div>
+</section>
+
+<p class="scoring-note">* Highlighted holes represent stroke holes.</p>
+
+<!-- ═══════════════ ADVANCED STATS ═══════════════ -->
+<h2 class="section-title">Advanced Stats</h2>
+<div class="stats-wrap"><table class="stats-table"><thead><tr><th>Player</th><th>Avg Gross</th><th>Avg Net</th><th>Gross Birdies</th><th>Net Birdies</th><th>Low Gross</th><th>Low Net</th></tr></thead><tbody>
+<!-- Seward: Gross 71,68 → Avg 69.5. Net 71,69 → Avg 70.0. Gross birdies: Wk1(4)+Wk2(7)=11. Net birdies: Wk1(4)+Wk2(6)=10. Low gross 68, Low net 69 -->
+<tr><td class="player-name">Seward</td><td class="stat-highlight">69.5</td><td class="stat-highlight">70.0</td><td class="birdie-count">12</td><td class="birdie-count">12</td><td class="stat-highlight">68</td><td class="stat-highlight">69</td></tr>
+<!-- Charlie: Gross 78,72 → Avg 75.0. Net 74,69 → Avg 71.5. Gross birdies: Wk1(3)+Wk2(2)=5. Net birdies: Wk1(5)+Wk2(5)=10. Low gross 72, Low net 69 -->
+<tr><td class="player-name">Charlie</td><td class="stat-highlight">75.0</td><td class="stat-highlight">71.5</td><td class="birdie-count">6</td><td class="birdie-count">10</td><td class="stat-highlight">72</td><td class="stat-highlight">69</td></tr>
+<!-- Stowe: Gross 77,76 → Avg 76.5. Net 69,69 → Avg 69.0. Gross birdies: Wk1(3)+Wk2(1)=4. Net birdies: Wk1(8)+Wk2(4)=12. Low gross 76, Low net 69 -->
+<tr><td class="player-name">Stowe</td><td class="stat-highlight">76.5</td><td class="stat-highlight">69.0</td><td class="birdie-count">5</td><td class="birdie-count">13</td><td class="stat-highlight">76</td><td class="stat-highlight">69</td></tr>
+</tbody></table></div>
+
+</div>
+
+<div class="footer">Cross Handed Crew · Winter 2026 World Tour · Last updated February 16, 2026 at 08:00 PM</div>
+
+<script>
+function showWeek(n) {
+    document.querySelectorAll('.week-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.week-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('week-' + n).classList.add('active');
+    document.getElementById('tab-' + n).classList.add('active');
+}
+</script>
 </body></html>
