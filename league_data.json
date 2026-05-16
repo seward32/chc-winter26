@@ -3,103 +3,126 @@
     "name": "Winter 2026 World Tour",
     "season": "2025-2026",
     "players": ["Seward", "Charlie", "Stowe"],
-    "badge": "Cross Handed Crew"
+    "badge": "Cross Handed Crew",
+    "bonusPoints": 4
   },
+  "schedule": [
+    { "week": 1,  "date": "2/1",  "course": "Cape Wickham Links",           "location": "Australia",        "played": true  },
+    { "week": 2,  "date": "2/8",  "course": "Barnbougle Lost Farm",          "location": "Australia",        "played": true  },
+    { "week": 3,  "date": "2/15", "course": "Royal Melbourne West",          "location": "Australia",        "played": true  },
+    { "week": 4,  "date": "2/22", "course": "Visby Golfklubb",               "location": "Sweden",           "played": true  },
+    { "week": 5,  "date": "3/1",  "course": "Great Northern",                "location": "Denmark",          "played": true  },
+    { "week": 6,  "date": "3/8",  "course": "Lofoten Links",                 "location": "Norway",           "played": true  },
+    { "week": 7,  "date": "3/15", "course": "Royal Dornoch",                 "location": "Scotland",         "played": true  },
+    { "week": 8,  "date": "3/22", "course": "St Andrews Links Old Course",   "location": "Scotland",         "played": true  },
+    { "week": 9,  "date": "3/29", "course": "Royal Portrush — Dunluce Links","location": "Northern Ireland", "played": true  },
+    { "week": 10, "date": "4/5",  "course": "Adare Manor",                   "location": "Ireland",          "played": true  },
+    { "week": 11, "date": "4/12", "course": "Bandon Dunes",                  "location": "Oregon",           "played": true  },
+    { "week": 12, "date": "4/19", "course": "The Lido",                      "location": "Wisconsin",        "played": true  }
+  ],
   "weeks": {
     "1": {
       "course": "Cape Wickham Links",
+      "courseInfo": { "par": [4,4,3,4,4,5,3,4,5,4,3,4,5,4,5,4,3,4], "hcp": [9,12,3,4,14,18,15,2,8,17,13,16,7,11,6,1,10,5] },
       "scores": {
-        "Seward": { "handicap": 0, "holes": [4,4,4,4,4,4,3,4,5,3,4,4,4,3,5,4,3,5] },
+        "Seward": { "handicap": 0,  "holes": [4,4,4,4,4,4,3,4,5,3,4,4,4,3,5,4,3,5] },
         "Charlie": { "handicap": 4, "holes": [4,4,4,4,5,4,3,4,4,4,4,5,5,6,4,6,4,4] },
-        "Stowe": { "handicap": 8, "holes": [5,4,4,4,4,6,4,4,4,5,3,5,7,3,5,4,2,4] }
+        "Stowe":   { "handicap": 8, "holes": [5,4,4,4,4,6,4,4,4,5,3,5,7,3,5,4,2,4] }
       }
     },
     "2": {
       "course": "Barnbougle Lost Farm",
+      "courseInfo": { "par": [5,4,4,3,4,3,4,5,4,5,4,5,4,4,3,4,3,4], "hcp": [18,16,12,11,1,10,5,4,13,14,3,17,8,15,6,9,7,2] },
       "scores": {
         "Seward": { "handicap": -1, "holes": [4,3,4,3,5,3,4,4,4,4,5,4,4,3,4,3,4,3] },
         "Charlie": { "handicap": 3, "holes": [6,4,5,3,4,3,4,4,4,5,4,4,4,4,3,3,3,5] },
-        "Stowe": { "handicap": 7, "holes": [5,4,4,3,5,3,4,5,5,6,4,5,4,3,4,3,4,5] }
+        "Stowe":   { "handicap": 7, "holes": [5,4,4,3,5,3,4,5,5,6,4,5,4,3,4,3,4,5] }
       }
     },
     "3": {
       "course": "Royal Melbourne West",
+      "courseInfo": { "par": [4,5,4,5,3,4,3,4,4,4,4,5,3,4,5,3,4,4], "hcp": [11,16,15,14,6,3,8,12,9,13,1,18,10,7,17,2,4,5] },
       "scores": {
-        "Seward": { "handicap": 0, "holes": [3,4,3,4,3,5,2,4,4,6,5,5,3,4,5,3,5,4] },
+        "Seward": { "handicap": 0,  "holes": [3,4,3,4,3,5,2,4,4,6,5,5,3,4,5,3,5,4] },
         "Charlie": { "handicap": 5, "holes": [3,5,4,4,3,6,3,4,4,3,5,5,3,4,4,3,4,7] },
-        "Stowe": { "handicap": 9, "holes": [4,5,4,6,4,5,3,4,5,4,5,4,3,4,5,3,5,6] }
+        "Stowe":   { "handicap": 9, "holes": [4,5,4,6,4,5,3,4,5,4,5,4,3,4,5,3,5,6] }
       }
     },
     "4": {
       "course": "Visby Golfklubb",
-      "courseInfo": {
-        "par": [3,4,5,4,3,5,3,4,4,5,4,4,4,3,4,5,3,5],
-        "hcp": [15,7,5,13,11,3,9,1,17,18,4,8,16,12,2,10,14,6]
-      },
+      "courseInfo": { "par": [3,4,5,4,3,5,3,4,4,5,4,4,4,3,4,5,3,5], "hcp": [15,7,5,13,11,3,9,1,17,18,4,8,16,12,2,10,14,6] },
       "scores": {
-        "Seward": { "handicap": 1, "holes": [3,4,5,4,3,5,3,4,5,5,3,5,4,4,4,5,3,5] },
+        "Seward": { "handicap": 1,  "holes": [3,4,5,4,3,5,3,4,5,5,3,5,4,4,4,5,3,5] },
         "Charlie": { "handicap": 6, "holes": [3,4,5,4,4,3,3,4,4,6,4,6,3,2,4,5,3,5] },
-        "Stowe": { "handicap": 11, "holes": [4,5,6,5,4,7,3,4,4,4,3,5,5,3,5,5,3,5] }
+        "Stowe":   { "handicap": 11,"holes": [4,5,6,5,4,7,3,4,4,4,3,5,5,3,5,5,3,5] }
       }
     },
     "5": {
       "course": "Great Northern",
-      "courseInfo": {
-        "par": [4,5,3,4,4,4,4,5,3,4,4,3,4,5,4,4,3,5],
-        "hcp": [14,2,16,6,4,10,18,8,12,9,11,17,15,5,7,3,13,1]
-      },
+      "courseInfo": { "par": [4,5,3,4,4,4,4,5,3,4,4,3,4,5,4,4,3,5], "hcp": [14,2,16,6,4,10,18,8,12,9,11,17,15,5,7,3,13,1] },
       "scores": {
-        "Seward": { "handicap": 2, "holes": [4,5,4,6,7,4,3,4,3,4,4,3,4,4,5,5,3,5] },
+        "Seward": { "handicap": 2,  "holes": [4,5,4,6,7,4,3,4,3,4,4,3,4,4,5,5,3,5] },
         "Charlie": { "handicap": 7, "holes": [4,5,3,4,4,4,4,5,3,4,4,3,3,5,4,4,4,5] },
-        "Stowe": { "handicap": 12, "holes": [5,6,3,5,5,5,4,6,6,5,5,3,4,4,5,7,3,4] }
+        "Stowe":   { "handicap": 12,"holes": [5,6,3,5,5,5,4,6,6,5,5,3,4,4,5,7,3,4] }
       }
     },
     "6": {
       "course": "Lofoten Links",
-      "courseInfo": {
-        "par": [4,3,4,4,5,4,3,5,4,4,4,3,5,4,4,4,3,4],
-        "hcp": [15,7,13,11,1,5,17,3,9,10,8,6,16,2,14,4,18,12]
-      },
+      "courseInfo": { "par": [4,3,4,4,5,4,3,5,4,4,4,3,5,4,4,4,3,4], "hcp": [15,7,13,11,1,5,17,3,9,10,8,6,16,2,14,4,18,12] },
       "scores": {
-        "Seward": { "handicap": 0, "holes": [4,4,4,4,4,6,4,5,4,5,4,3,5,4,4,5,3,5], "stableford": 30 },
-        "Charlie": { "handicap": 4, "holes": [3,5,4,4,5,4,4,5,5,3,4,4,4,5,3,6,3,5], "stableford": 37 },
-        "Stowe": { "handicap": 9, "holes": [4,4,4,4,5,5,3,6,3,6,4,3,5,4,3,5,3,5], "stableford": 40 }
+        "Seward": { "handicap": 0,  "holes": [4,4,4,4,4,6,4,5,4,5,4,3,5,4,4,5,3,5] },
+        "Charlie": { "handicap": 4, "holes": [3,5,4,4,5,4,4,5,5,3,4,4,4,5,3,6,3,5] },
+        "Stowe":   { "handicap": 9, "holes": [4,4,4,4,5,5,3,6,3,6,4,3,5,4,3,5,3,5] }
       }
     },
     "7": {
       "course": "Royal Dornoch",
-      "courseInfo": {
-        "par": [4,3,4,4,4,3,4,4,5,3,4,5,3,4,4,4,4,4],
-        "hcp": [12,6,14,4,18,8,2,16,10,11,3,7,15,1,17,5,13,9]
-      },
+      "courseInfo": { "par": [4,3,4,4,4,3,4,4,5,3,4,5,3,4,4,4,4,4], "hcp": [12,6,14,4,18,8,2,16,10,11,3,7,15,1,17,5,13,9] },
       "scores": {
-        "Seward": { "handicap": 3, "holes": [3,2,4,4,3,3,5,4,5,4,3,4,3,4,3,4,4,4], "stableford": 43 },
-        "Charlie": { "handicap": 7, "holes": [3,4,4,4,4,3,5,4,4,9,4,5,3,5,9,4,4,4], "stableford": 38 },
-        "Stowe": { "handicap": 12, "holes": [4,6,4,5,6,4,5,5,5,2,4,5,4,3,4,3,5,7], "stableford": 37 }
+        "Seward": { "handicap": 3,  "holes": [3,2,4,4,3,3,5,4,5,4,3,4,3,4,3,4,4,4] },
+        "Charlie": { "handicap": 7, "holes": [3,4,4,4,4,3,5,4,4,9,4,5,3,5,9,4,4,4] },
+        "Stowe":   { "handicap": 12,"holes": [4,6,4,5,6,4,5,5,5,2,4,5,4,3,4,3,5,7] }
       }
     },
     "8": {
       "course": "St Andrews Links Old Course",
-      "courseInfo": {
-        "par": [4,4,4,4,5,4,4,3,4,4,3,4,4,5,4,4,4,4],
-        "hcp": [10,6,16,8,2,12,4,14,18,15,7,3,11,1,9,13,5,17]
-      },
+      "courseInfo": { "par": [4,4,4,4,5,4,4,3,4,4,3,4,4,5,4,4,4,4], "hcp": [10,6,16,8,2,12,4,14,18,15,7,3,11,1,9,13,5,17] },
       "scores": {
-        "Seward": { "handicap": -1, "holes": [4,4,3,4,4,4,4,2,3,3,4,4,4,4,4,4,4,4], "stableford": 40 },
-        "Charlie": { "handicap": 4, "holes": [4,3,5,4,5,4,4,3,2,4,3,4,3,5,6,5,5,4], "stableford": 39 },
-        "Stowe": { "handicap": 9, "holes": [5,5,5,4,5,3,4,3,4,3,3,4,3,4,5,6,4,5], "stableford": 42 }
+        "Seward": { "handicap": -1, "holes": [4,4,3,4,4,4,4,2,3,3,4,4,4,4,4,4,4,4] },
+        "Charlie": { "handicap": 4, "holes": [4,3,5,4,5,4,4,3,2,4,3,4,3,5,6,5,5,4] },
+        "Stowe":   { "handicap": 9, "holes": [5,5,5,4,5,3,4,3,4,3,3,4,3,4,5,6,4,5] }
       }
     },
     "9": {
-      "course": "Royal Portrush - Dunluce Links",
-      "courseInfo": {
-        "par": [4,5,3,4,4,3,5,4,4,4,5,5,3,4,4,3,4,4],
-        "hcp": [7,13,17,1,15,11,5,9,3,16,8,12,18,2,10,4,14,6]
-      },
+      "course": "Royal Portrush — Dunluce Links",
+      "courseInfo": { "par": [4,5,3,4,4,3,5,4,4,4,5,5,3,4,4,3,4,4], "hcp": [7,13,17,1,15,11,5,9,3,16,8,12,18,2,10,4,14,6] },
       "scores": {
-        "Seward": { "handicap": -1, "holes": [5,5,3,5,8,3,5,4,5,4,4,4,3,5,3,2,4,4], "stableford": 33 },
-        "Charlie": { "handicap": 3, "holes": [5,5,3,3,4,4,4,4,5,4,5,5,4,6,5,3,4,5], "stableford": 33 },
-        "Stowe": { "handicap": 7, "holes": [5,5,2,5,4,4,6,5,5,4,5,5,2,5,5,4,4,5], "stableford": 35 }
+        "Seward": { "handicap": -1, "holes": [5,5,3,5,8,3,5,4,5,4,4,4,3,5,3,2,4,4] },
+        "Charlie": { "handicap": 3, "holes": [5,5,3,3,4,4,4,4,5,4,5,5,4,6,5,3,4,5] },
+        "Stowe":   { "handicap": 7, "holes": [5,5,2,5,4,4,6,5,5,4,5,5,2,5,5,4,4,5] }
+      }
+    },
+    "10": {
+      "course": "Adare Manor",
+      "courseInfo": { "par": [4,4,4,3,4,3,5,4,5,4,3,5,4,4,4,3,4,5], "hcp": [11,5,3,15,17,7,13,9,1,8,14,16,4,12,18,6,10,2] },
+      "scores": {
+        "Seward": { "handicap": 0,  "holes": [4,4,4,2,4,3,4,5,5,4,3,5,4,4,3,2,3,5] },
+        "Stowe":   { "handicap": 9, "holes": [4,4,5,5,5,4,6,6,5,5,3,6,4,3,4,4,5,4] }
+      }
+    },
+    "11": {
+      "course": "Bandon Dunes",
+      "courseInfo": { "par": [4,3,5,4,4,3,4,4,5,4,4,3,5,4,3,4,4,5], "hcp": [13,15,3,5,1,17,7,11,9,8,2,18,6,16,14,10,12,4] },
+      "scores": {
+        "Seward": { "handicap": 2,  "holes": [4,4,4,4,3,4,4,3,4,3,3,2,4,4,4,3,4,5] },
+        "Stowe":   { "handicap": 12,"holes": [4,3,5,4,4,3,4,4,5,4,4,3,6,4,4,3,4,6] }
+      }
+    },
+    "12": {
+      "course": "The Lido",
+      "courseInfo": { "par": [4,4,3,5,4,5,5,3,4,4,4,4,4,3,4,3,5,4], "hcp": [11,9,15,1,13,5,3,7,17,8,10,2,16,18,14,6,4,12] },
+      "scores": {
+        "Seward": { "handicap": 0,  "holes": [4,3,3,4,3,4,4,4,3,4,4,3,4,2,3,4,5,3] }
       }
     }
   }
